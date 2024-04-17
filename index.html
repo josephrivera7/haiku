@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en-US">
+		<head>
+				<meta charset="UTF-8">
+				<title>What is Art</title>
+				<link rel="stylesheet" href="./styles.css">
+		</head>
+		<body>
+				<style>
+					html{
+						background: #234d1f;
+					}
+
+					#Art{
+						text-align: center;
+						font-size: 100px;
+					}
+
+					#def{
+						text-align: center;
+						font-size: 25px;
+					}
+
+					#text{
+						right: 0;
+						top: 0;
+						bottom: 0;
+						left: 0;
+						display: flex;
+						justify-content: center;
+						align-items: center;
+						width: 100%;
+					}
+
+					#restart{
+						position: absolute;
+						bottom: 0;
+						right: 0;
+						background-color: bisque;
+						border-radius: 20px;
+						padding: 0 10px;
+						margin: auto auto 5px auto;
+					}
+
+					#define{
+						right: 0;
+						top: 0;
+						bottom: 0;
+						left: 0;
+						display: flex;
+						justify-content: center;
+						align-items: center;
+						width: 100%;
+					}
+
+					#question{
+						bottom: 0;
+						position: absolute;
+						left: 0;
+						right: 0;
+						display: flex;
+						justify-content: center;
+						background-color: bisque;
+						width: 15%;
+						margin: auto auto 5px auto;
+						border-radius: 20px
+					}
+
+					#helper{
+						opacity: 0.0;
+            color: white;
+					}
+
+					.images img {
+						width: 100%;
+						max-width: 350px;
+						height: 300px;
+						object-fit: cover;
+						border-radius: 10px;
+					}
+
+					.images::after {
+						content: "";
+						width: 350px;
+					}
+
+
+				</style>
+
+				<div id="text">
+					<h1 id="Art" onclick="first()">Art?</h1>
+				</div>
+
+				<div id="images">
+					<img id="1" src="" onclick="change()">
+					<img id="2" src="" onclick="change()">
+					<img id="3" src="" onclick="change()">
+					<img id="4" src="" onclick="change()">
+					<img id="5" src="" onclick="change()">
+					<img id="6" src="" onclick="change()">
+					<img id="7" src="" onclick="change()">
+					<img id="8" src="" onclick="change()">
+					<img id="9" src="" onclick="change()">
+				</div>
+
+				<div id="helper">
+					<p>Click these images to get a glimpse...</p>
+				</div>
+
+				<div id="question" onclick="next()">
+						<p>What is it?</p>
+				</div>
+
+				<div id="restart" onclick="back()">
+						<p>Restart?</p>
+				</div>
+
+				<script>
+						// alert("Click around! See what happens")
+					let definition1 = "the expression or application of human creative   skill and imagination, typically in a visual form such as painting or sculpture, producing works to be appreciated primarily for their beauty or emotional power";
+					let definition2 = "works produced by human creative skill and imagination";
+					let definition3 = "creative activity resulting in the production of paintings, drawings, or sculpture";
+					let definition4 = "the various branches of creative activity, such as painting, music, literature, and dance";
+					let definition5 = "a skill at doing a specified thing, typically one acquired through practice"
+					let list_of_imgs = ["mona_lisa.jpg", "van_gogh.jpeg", "venus.jpeg", "ahh.jpeg", "beam.jpeg", "gd.jpeg","jimmy.jpeg", "louis.jpeg", "mike.webp", "prince.jpeg"];
+					let list_of_defs = [definition1, definition2, definition3, definition4, definition5];
+						function first(){
+							document.getElementById("Art").innerHTML = "Art: " + definition1;
+							document.getElementById("Art").style.fontSize = "50px";
+							
+						}
+
+						function next(){
+							for(let i = 1; i < 10; i++){
+									document.getElementById(i.toString()).src= "mona_lisa.jpg";
+                document.getElementById(i.toString()).style.opacity = 1.0;
+							}
+							document.getElementById("helper").style.opacity = 1.0;
+						}
+
+						function change(){
+							let x = Math.round(Math.random() * (9 - 0) + 0);
+							let z = Math.round(Math.random() * (4 - 0) + 0)
+							for(let y = 1; y < 10; y++){
+								document.getElementById(y.toString()).src= list_of_imgs[x];
+                document.getElementById("Art").style.fontSize = "50px";
+								document.getElementById("Art").innerHTML = "Art: " + list_of_defs[z];
+								document.getElementById(y.toString()).style.maxWidth = "350px";
+								document.getElementById(y.toString()).style.height = "300px";
+								document.getElementById(y.toString()).style.objectFit = "cover";
+								document.getElementById(y.toString()).style.borderRadius = "10px";
+							}
+						}
+
+						function back(){
+							document.getElementById("Art").innerHTML = "Art?";
+              document.getElementById("Art").style.fontSize = "100px";
+							for(let i = 1; i < 10; i++){
+								document.getElementById(i.toString()).src= "";
+                document.getElementById(i.toString()).style.opacity = 0.0;
+							}
+							document.getElementById("helper").style.opacity = 0.0;
+
+						}
+				</script>
+
+		</body>
+</html>
